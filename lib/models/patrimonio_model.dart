@@ -11,10 +11,15 @@ String patrimonioToJson(Patrimonio data) => json.encode(data.toJson());
 
 class Patrimonio {
   final _url = "https://www.turismo.navarra.es/imgs/rrtt/";
+  final _dir = "assets/images/local/";
 
 //"https://www.turismo.navarra.es/imgs/rrtt/03/01/00/00/5967FotoTH2.JPG";
   getImgUrl() {
     return _url + this.path + this.imgFichero;
+  }
+
+  getImgPath() {
+    return _dir + this.imgFichero;
   }
 
   Patrimonio({

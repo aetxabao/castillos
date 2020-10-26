@@ -49,6 +49,7 @@ flutter:
   assets:
     - assets/data/Opendata_Resultados_PM_es.json
     - assets/images/cast.jpg
+    - assets/images/local/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
