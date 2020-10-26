@@ -10,6 +10,13 @@ Patrimonio patrimonioFromJson(String str) =>
 String patrimonioToJson(Patrimonio data) => json.encode(data.toJson());
 
 class Patrimonio {
+  final _url = "https://www.turismo.navarra.es/imgs/rrtt/";
+
+//"https://www.turismo.navarra.es/imgs/rrtt/03/01/00/00/5967FotoTH2.JPG";
+  getImgUrl() {
+    return _url + this.path + this.imgFichero;
+  }
+
   Patrimonio({
     this.codrecurso,
     this.urlNombreCast,
