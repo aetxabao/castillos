@@ -1,4 +1,5 @@
 import 'package:castillos/models/patrimonio_model.dart';
+import 'package:castillos/screens/webview_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
@@ -21,16 +22,26 @@ class SwiperWidget extends StatelessWidget {
       itemHeight: screenSize.height * 0.5,
       layout: SwiperLayout.STACK,
       itemBuilder: (BuildContext context, int index) {
-        return ClipRRect(
-          borderRadius: BorderRadius.circular(20.0),
-          // child: Image.network(
-          //   "http://via.placeholder.com/350x150",
-          //   fit: BoxFit.fill,
-          // ),
-          child: FadeInImage(
-            placeholder: AssetImage('assets/images/cast.jpg'),
-            image: NetworkImage(lista[index].getImgUrl()),
-            fit: BoxFit.cover,
+        return GestureDetector(
+          onTap: () {
+            //print("url: ${lista[index].getWebUrl()}");
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        WebViewScreen(patrimonio: lista[index])));
+          },
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            // child: Image.network(
+            //   "http://via.placeholder.com/350x150",
+            //   fit: BoxFit.fill,
+            // ),
+            child: FadeInImage(
+              placeholder: AssetImage('assets/images/cast.jpg'),
+              image: NetworkImage(lista[index].getImgUrl()),
+              fit: BoxFit.cover,
+            ),
           ),
         );
       },

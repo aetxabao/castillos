@@ -18,6 +18,14 @@ class SelectScreen extends StatelessWidget {
               SizedBox(
                 height: 20.0,
               ),
+              Center(
+                  child: Text(
+                "Información web",
+                style: Theme.of(context).textTheme.headline6,
+              )),
+              SizedBox(
+                height: 20.0,
+              ),
               _swiper(),
               SizedBox(
                 height: 20.0,
