@@ -38,13 +38,16 @@ class SliderWidget extends StatelessWidget {
         },
         child: Container(
           margin: EdgeInsets.only(right: 20.0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(10.0),
-            child: FadeInImage(
-              placeholder: AssetImage('assets/images/cast.jpg'),
-              image: AssetImage(p.getImgPath()),
-              fit: BoxFit.cover,
-              height: 120.0,
+          child: Hero(
+            tag: p.codrecurso,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10.0),
+              child: FadeInImage(
+                placeholder: AssetImage('assets/images/cast.jpg'),
+                image: AssetImage(p.getImgPath()),
+                fit: BoxFit.cover,
+                height: 120.0,
+              ),
             ),
           ),
         ),

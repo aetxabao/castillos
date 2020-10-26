@@ -1,4 +1,5 @@
 import 'package:castillos/models/patrimonio_model.dart';
+import 'package:castillos/screens/webview_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:utm/utm.dart';
@@ -53,35 +54,46 @@ class _MapaScreenState extends State<MapaScreen> {
   }
 
   Widget _header() {
-    return Container(
-      child: Column(
-        children: [
-          Text(patrimonio.nombre,
-              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
-          SizedBox(
-            height: 30.0,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10.0),
-                child: FadeInImage(
-                  placeholder: AssetImage('assets/images/cast.jpg'),
-                  image: AssetImage(patrimonio.getImgPath()),
-                  fit: BoxFit.cover,
-                  height: 120.0,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => WebViewScreen(patrimonio: patrimonio)));
+      },
+      child: Container(
+        child: Column(
+          children: [
+            Text(patrimonio.nombre,
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold)),
+            SizedBox(
+              height: 30.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Hero(
+                  tag: patrimonio.codrecurso,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10.0),
+                    child: FadeInImage(
+                      placeholder: AssetImage('assets/images/cast.jpg'),
+                      image: AssetImage(patrimonio.getImgPath()),
+                      fit: BoxFit.cover,
+                      height: 120.0,
+                    ),
+                  ),
                 ),
-              ),
-              Column(
-                children: [
-                  Text(patrimonio.nombreLocalidad),
-                  Text("Información web"),
-                ],
-              )
-            ],
-          )
-        ],
+                Column(
+                  children: [
+                    Text(patrimonio.nombreLocalidad),
+                    Text("Información web"),
+                  ],
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
